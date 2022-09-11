@@ -44,40 +44,61 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(fontSize: 20),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ButtonBar(
-                    buttonHeight: 50,
-                    buttonMinWidth: 100,
-                    children: [
-                      OutlinedButton(
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                height: 50,
+                width: 300,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 99,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          right: BorderSide(),
+                        ),
+                      ),
+                      child: TextButton(
                         onPressed: () {},
                         child: const Text(
                           'Aluno',
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
-                      OutlinedButton(
+                    ),
+                    Container(
+                      width: 99,
+                      child: TextButton(
                         onPressed: () {},
                         child: const Text(
                           'Servidor',
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
-                      OutlinedButton(
+                    ),
+                    Container(
+                      width: 99,
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          left: BorderSide(),
+                        ),
+                      ),
+                      child: TextButton(
                         onPressed: () {},
                         child: const Text(
                           'Responsável',
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
-                    ],
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.fromLTRB(0, 30, 0, 15),
                 child: SizedBox(
                   width: 300,
                   child: TextFormField(
@@ -85,6 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: const InputDecoration(
                       labelText: 'Usuário',
                       labelStyle: TextStyle(color: Colors.black),
+                      border: OutlineInputBorder(),
                     ),
                     onChanged: (value) {
                       credentials.login = value;
@@ -100,6 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: const InputDecoration(
                     labelText: 'Senha',
                     labelStyle: TextStyle(color: Colors.black),
+                    border: OutlineInputBorder(),
                   ),
                   onChanged: (value) {
                     credentials.pswd = value;
@@ -111,7 +134,20 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(35),
-                    child: const Text('Esqueceu a senha? Clique aqui'),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Esqueceu a senha? ',
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          TextSpan(
+                            text: 'Clique aqui',
+                            style: const TextStyle(color: Colors.blue),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -121,11 +157,11 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     width: 300,
                     child: ElevatedButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                         backgroundColor:
-                            const MaterialStatePropertyAll<Color>(Colors.green),
+                            MaterialStatePropertyAll<Color>(Colors.green),
                       ),
-                      child: Text('Entrar'),
+                      child: const Text('Entrar'),
                       onPressed: () {
                         credentials.verifyCredentials(context);
                       },
