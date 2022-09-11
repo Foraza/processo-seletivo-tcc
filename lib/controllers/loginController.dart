@@ -21,4 +21,10 @@ class Login {
       Navigator.pushNamed(context, '/home');
     }
   }
+
+  void logout(BuildContext context) {
+    login = '';
+    pswd = '';
+    Navigator.pushNamed(context, '/');
+  }
 }

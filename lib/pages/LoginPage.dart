@@ -25,8 +25,6 @@ class _LoginPageState extends State<LoginPage> {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.white,
-                Colors.white,
-                Colors.white,
                 Color.fromARGB(255, 205, 229, 212),
               ],
             ),
